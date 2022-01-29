@@ -1,4 +1,4 @@
-package com.walter.crossfitweb;
+package com.example.crossfitweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

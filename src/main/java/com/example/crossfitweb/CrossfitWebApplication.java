@@ -1,4 +1,4 @@
-package com.walter.crossfitweb;
+package com.example.crossfitweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CrossfitWebApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(CrossfitWebApplication.class, args);
     }
 

@@ -1,4 +1,4 @@
-package com.walter.crossfitweb.controller;
+package com.example.crossfitweb.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BoardController {
 
     @GetMapping("/")
-    public String home(){
-        return "home";
+    public String index(){
+        return "index";
     }
+
 
 }

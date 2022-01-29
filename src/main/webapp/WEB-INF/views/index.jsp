@@ -5,6 +5,6 @@
     <title>Title</title>
 </head>
 <body>
-    <div>홈입니다.</div>
+
 </body>
 </html>
