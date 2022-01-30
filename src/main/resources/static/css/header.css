@@ -1,0 +1,17 @@
+header{
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: red;
+    margin: 10px;
+}
+.right_btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.right_btn>a{
+    color: white;
+    padding-left: 10px;
+}

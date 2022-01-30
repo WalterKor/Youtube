@@ -9,6 +9,7 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/crossfit?serverTimezone=Asia/Seoul
