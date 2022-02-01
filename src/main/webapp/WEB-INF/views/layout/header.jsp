@@ -27,6 +27,7 @@
             <a href="">contact</a>
             <a href="">QnA</a>
         </div>
+        <div>휴가</div>
     </header>
 
 
