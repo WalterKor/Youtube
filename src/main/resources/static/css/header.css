@@ -1,11 +1,13 @@
 header{
-    min-width: 800px;
-    position: static;
+    width: 95%;
+    min-width: 600px;
+    position: absolute;
+    margin: 20px;
+}
+.header_content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: red;
-    margin: 10px;
 }
 .header_right{
     display: flex;
@@ -13,6 +15,6 @@ header{
 }
 .right_btn>a{
     color: white;
-    padding-left: 10px;
+    padding-right: 10px;
     text-decoration: none;
 }
