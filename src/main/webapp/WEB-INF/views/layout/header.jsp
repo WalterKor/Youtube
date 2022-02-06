@@ -41,5 +41,5 @@
         <c:when test="${empty principal}">로그인 안됨</c:when>
         <c:otherwise>로그인됨</c:otherwise>
     </c:choose>
-
+    <div>오늘 쉬는날</div>
 
