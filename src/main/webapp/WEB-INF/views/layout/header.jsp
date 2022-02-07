@@ -28,18 +28,31 @@
                     <img src="/img/logo_btn.png">
                 </a>
             </div>
-            <div class="header_right">
-                <div class="right_btn">
-                    <a href="/auth/loginForm">login</a>
-                    <a href="#">contact</a>
-                    <a href="#">QnA</a>
-                </div>
-            </div>
+            <c:choose>
+                <c:when test="${empty principal}">
+                    <div class="header_right">
+                        <div class="right_btn">
+                            <a href="/auth/loginForm">login</a>
+                            <a href="#">contact</a>
+                            <a href="#">QnA</a>
+                        </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="header_right">
+                        <div class="right_btn">
+                            <a href="#">mypage</a>
+                            <a href="/logout">logout</a>
+                            <a href="#">contact</a>
+                            <a href="#">QnA</a>
+                        </div>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
+        <%--로그인한 사람들한테는 안보임--%>
+        <sec:authorize access="isAnonymous()">
+            <div>로그인한 사람들한테는 안보임</div>
+        </sec:authorize>
     </header>
-    <c:choose>
-        <c:when test="${empty principal}">로그인 안됨</c:when>
-        <c:otherwise>로그인됨</c:otherwise>
-    </c:choose>
-    <div>오늘 쉬는날</div>
 

@@ -6,11 +6,11 @@
             <form action="/auth/loginProc" method="post">
                 <label for="username">username : </label>
                 <input type="text" placeholder="Enter username" id="username" name="username">
-
                 <label for="username">username : </label>
                 <input type="password" id="password" name="password" placeholder="Enter Password">
                 <button id="btn-login">로그인</button>
             </form>
+            <a href="/auth/joinForm">회원가입페이지</a>
         </div>
     </div>
 
