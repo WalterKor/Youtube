@@ -12,4 +12,10 @@ public class BoardController {
     }
 
 
+    @GetMapping("/user/mypage")
+    public String mypage(){
+        return "user/mypage";
+    }
+
+
 }

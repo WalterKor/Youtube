@@ -41,7 +41,7 @@
                 <c:otherwise>
                     <div class="header_right">
                         <div class="right_btn">
-                            <a href="#">mypage</a>
+                            <a href="/user/mypage">mypage</a>
                             <a href="/logout">logout</a>
                             <a href="#">contact</a>
                             <a href="#">QnA</a>
