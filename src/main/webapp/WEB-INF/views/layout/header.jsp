@@ -45,6 +45,7 @@
                             <a href="/logout">logout</a>
                             <a href="#">contact</a>
                             <a href="#">QnA</a>
+                            <div>번아웃</div>
                         </div>
                     </div>
                 </c:otherwise>
