@@ -45,6 +45,7 @@
                             <a href="/logout">logout</a>
                             <a href="#">contact</a>
                             <a href="#">QnA</a>
+                            <div>vaction</div>
                         </div>
                     </div>
                 </c:otherwise>
