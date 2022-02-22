@@ -1,0 +1,6 @@
+.upload_container{max-width: 700px; margin: 2rem auto;}
+
+.upload_header{ text-align: center; margin-bottom: 2rem;}
+
+.DropZone{display: flex; justify-content: space-between;}
+
