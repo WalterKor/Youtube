@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//const { Video } = require("../models/Video");
+const { Video } = require("../models/Video");
 const multer = require('multer');
 const { auth } = require("../middleware/auth");
 var ffmpeg = require('fluent-ffmpeg');
@@ -68,13 +68,40 @@ router.post('/thumbnail', (req, res)=>{
         return res.json({ success: false, err})
     })
     .screenshots({
-        count:3,
+        count:1,
         folder: 'uploads/thumbnails',
         size: '320x240',
         filename: 'thumbnail-%b.png'
     })
     
 });
+
+//========================================
+//           서버에 저장하기
+//========================================
+router.post('/uploadVideo', (req, res)=>{
+
+    //비디오를 정보들을 저장한다.
+    const video = new Video(req.body)
+    video.save((err, doc)=>{
+        if(err) return res.json({success: false, err})
+        res.status(200).json({success: true})
+    })
+});
+
+//========================================
+//           비디오 가져오기
+//========================================
+router.get('/getVideos', (req, res)=>{
+    //비디오를 DB에서 가져와서 클라이언트에 보낸다.
+    Video.find()
+        .populate('writer')
+        .exec((err, videos)=>{
+            if(err) return res.status(400).send(err);
+            res.status(200).json({success: true, videos})
+        })
+});
+
 
 
 module.exports = router;
