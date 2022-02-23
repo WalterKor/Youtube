@@ -4,6 +4,7 @@ const { Video } = require("../models/Video");
 const multer = require('multer');
 const { auth } = require("../middleware/auth");
 var ffmpeg = require('fluent-ffmpeg');
+const { Subscriber } = require('../models/Subscriber');
 
 
 //==================================
@@ -90,7 +91,7 @@ router.post('/uploadVideo', (req, res)=>{
 });
 
 //========================================
-//           비디오 가져오기
+//    랜딩화면에 보여질 비디오 가져오기
 //========================================
 router.get('/getVideos', (req, res)=>{
     //비디오를 DB에서 가져와서 클라이언트에 보낸다.
@@ -101,6 +102,48 @@ router.get('/getVideos', (req, res)=>{
             res.status(200).json({success: true, videos})
         })
 });
+
+//========================================
+//     디테일페이지 비디오정보 가져오기
+//========================================
+router.post("/getVideo", (req, res) => {
+
+    Video.findOne({ "_id" : req.body.videoId })
+    .populate('writer')
+    .exec((err, video) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).json({ success: true, video })
+    })
+});
+
+//========================================
+//     구독페이지 동영상 가져오기
+//========================================
+
+router.post("/getSubscriptionVideos", (req, res) => {
+
+    Subscriber.find({ 'userFrom': req.body.userFrom })
+    .exec((err, subscribers)=> {
+        if(err) return res.status(400).send(err);
+
+        let subscribedUser = [];
+
+        subscribers.map((subscriber, i)=> {
+            subscribedUser.push(subscriber.userTo)
+        })
+
+
+        //Need to Fetch all of the Videos that belong to the Users that I found in previous step. 
+        Video.find({ writer: { $in: subscribedUser }})
+            .populate('writer')
+            .exec((err, videos) => {
+                if(err) return res.status(400).send(err);
+                res.status(200).json({ success: true, videos })
+            })
+    })
+
+});
+
 
 
 

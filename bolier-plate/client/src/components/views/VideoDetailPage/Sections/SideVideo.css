@@ -1,0 +1,6 @@
+.SideVideo_container{
+    display: flex;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+}
+.SideVideo_cards{width: 40%; margin-right: 1rem;   }
