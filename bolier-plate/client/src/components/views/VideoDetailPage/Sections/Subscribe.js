@@ -4,6 +4,14 @@ import './Subscribe.css';
 
 function Subscribe(props) {
 
+    let mypage = false;
+    
+    if( localStorage.getItem('userId') == props.userTo){
+        mypage = true;
+    }else{
+        mypage = false;   
+    }
+
     const [SubscribeNumber, setSubscribeNumber] = useState(0);
     const [Subscribed, setSubscribed] = useState(false);
 
@@ -66,16 +74,17 @@ function Subscribe(props) {
         })      
     }, [])
   return (
-    <div>
-         <button 
+    <div>        
+        { mypage ? <div>내 동영상</div> : 
+        <button 
             onClick={onSubscribe}
             style={{
                 backgroundColor: `${Subscribed ? '#AAAAAA' : '#CC0000'}`,
                 borderRadius: '4px', color: 'white', border: '0.1px',
                 padding: '10px 16px', fontWeight: '500', fontSize: '1rem', textTransform: 'uppercase'
             }}>
-                {SubscribeNumber} {Subscribed ? 'Subscribed' : 'Subscribe'}
-            </button>
+                {Subscribed ? 'Subscribed' : 'Subscwribe'}
+        </button>}
     </div>
   )
 }
