@@ -8,12 +8,16 @@ import Comment from './Sections/Comment';
 
 function VideoDetailPage(props) {
 
-    const videoId = props.match.params.videoId
+    const videoId = props.match.params.videoId;
     const [Video, setVideo] = useState([]);
-    const videoVariable = { videoId: videoId }
-    const [Comments, setComments] = useState([]);
+    const [CommentLists, setCommentLists] = useState([]);
+
+    const videoVariable = {
+        videoId: videoId
+    }
 
     useEffect(() => {    
+        //해당 비디오 가져오는거
         Axios.post('/api/video/getVideo', videoVariable)
         .then(response => {
             if (response.data.success) {            
@@ -23,21 +27,26 @@ function VideoDetailPage(props) {
             }
         })
 
-        Axios.post('/api/comment/getComments', videoVariable)
-        .then(res =>{
-            if(res.data.success){
-                setComments(res.data.Comments);
-                console.log(Comments);
-            }else{
-                alert('comment 정보를 가져오는 것을 실패 했습니다.')
+        //해당페이지 댓글 전부 가져오는거
+        Axios.post('/api/comment/getComments', videoId)
+        .then(response => {
+            if (response.data.success) {                
+                setCommentLists(response.data.comments)
+            } else {
+                alert('댓글 정보를 가져오는것에 실패했습니다.')
             }
         })
 
 
+
     },[])
+
+    const refreshFunction = (newComment)=>{
+        setCommentLists(CommentLists.concat(newComment));
+    }
+
     
     if(Video.writer){
-
         return (
           <Row>
               <Col lg={18} xs={24}>
@@ -54,7 +63,7 @@ function VideoDetailPage(props) {
                           />
                       </List.Item>
                       {/* 댓글 부분 */}
-                      <Comment commentList={Comments} postId={videoId}/>
+                      <Comment refreshFunction={refreshFunction} CommentLists={CommentLists} postId={videoId}/>
                   </div>
               </Col>
               <Col lg={6} xs={24}>

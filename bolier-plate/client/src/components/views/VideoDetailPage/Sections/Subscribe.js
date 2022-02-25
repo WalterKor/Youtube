@@ -83,7 +83,7 @@ function Subscribe(props) {
                 borderRadius: '4px', color: 'white', border: '0.1px',
                 padding: '10px 16px', fontWeight: '500', fontSize: '1rem', textTransform: 'uppercase'
             }}>
-                {Subscribed ? 'Subscribed' : 'Subscwribe'}
+                {Subscribed ? '구독중' : '구독하기'}
         </button>}
     </div>
   )

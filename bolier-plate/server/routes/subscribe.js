@@ -14,6 +14,9 @@ router.post('/subscribeNumber', (req, res)=>{
     })
 });
 
+
+
+
 router.post('/subscribed', (req, res)=>{
     Subscriber.find({ 'userTo': req.body.userTo, 'userFrom': req.body.userFrom})
     .exec((err, data)=>{
