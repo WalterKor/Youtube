@@ -20,7 +20,7 @@ router.post('/subscribeNumber', (req, res)=>{
 router.post('/subscribed', (req, res)=>{
     Subscriber.find({ 'userTo': req.body.userTo, 'userFrom': req.body.userFrom})
     .exec((err, data)=>{
-        if(err) return res.status(400).send(err);
+        if(err) return res.status(400).send(err);   
         let result = false;
         if(data.length !== 0){
             result = true;
