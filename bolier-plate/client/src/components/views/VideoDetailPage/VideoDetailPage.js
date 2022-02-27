@@ -16,6 +16,7 @@ function VideoDetailPage(props) {
     }
 
     useEffect(() => {    
+    
         //해당 비디오 가져오는거
         Axios.post('/api/video/getVideo', videoVariable)
         .then(response => {
@@ -27,7 +28,7 @@ function VideoDetailPage(props) {
         })
 
         //해당페이지 댓글 전부 가져오는거
-        Axios.get('/api/comment/getComments', videoVariable)
+        Axios.post('/api/comment/getComments', videoVariable)
         .then(response => {
             if (response.data.success) {                                              
                 setCommentLists(response.data.comments)

@@ -107,7 +107,7 @@ router.get('/getVideos', (req, res)=>{
 //     디테일페이지 비디오정보 가져오기
 //========================================
 router.post("/getVideo", (req, res) => {
-
+    console.log
     Video.findOne({ "_id" : req.body.videoId })
     .populate('writer')
     .exec((err, video) => {
