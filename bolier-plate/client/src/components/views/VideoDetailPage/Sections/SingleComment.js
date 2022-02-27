@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import {Comment, Avatar, Button, Input } from 'antd';
 import Axios from 'axios';
 import { useSelector } from 'react-redux';
@@ -10,8 +10,8 @@ function SingleComment(props) {
     const user = useSelector(state => state.user);
     const [CommentValue, setCommentValue] = useState("");
     const [OpenReply, setOpenReply] = useState(false);
-    
-    
+
+
     const onHandleChange = (event)=>{ 
         setCommentValue(event.currentTarget.value) 
     };
@@ -53,13 +53,17 @@ function SingleComment(props) {
     
     return (
         <div>
-            {/* antd comment컴포넌트 */}
+            {/* antd comment컴포넌트 */}            
             <Comment
                 actions={actions}        
-                author= {<p></p> }
-                avatar={ <Avatar src alt /> }
-                content={ <p>{props.comment.content}</p> }
-            ></Comment>            
+                author={props.comment.writer.name}
+                avatar={
+                <Avatar
+                src ={props.comment.writer.image}
+                alt= "image" /> 
+                }
+                content={<p>{props.comment.content}</p>}
+            />
             {/* 대댓글달기 컴포넌트 */}
             {OpenReply && 
                 <form style={{ display : 'flex'}} onSubmit={onsubmit} >

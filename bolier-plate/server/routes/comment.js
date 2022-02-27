@@ -21,12 +21,13 @@ router.post('/saveComment', (req, res)=>{
 });
 
 
-router.post("/getComments", (req, res) => {
-
-    Comment.find({ "postId": req.body.videoId })
+router.get("/getComments", (req, res) => {
+    console.log('서버단에는 옴')
+    console.log(req.body);
+    Comment.find({"postId": req.body.videoId })
         .populate('writer')
         .exec((err, comments) => {
-            if (err) return res.status(400).send(err)
+            if (err) return res.status(400).send(err)            
             res.status(200).json({ success: true, comments })
         })
 
