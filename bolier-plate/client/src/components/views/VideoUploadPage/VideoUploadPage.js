@@ -68,7 +68,7 @@ const onSubmit = (e)=>{
 
                 setTimeout(() => {
                     props.history.push('/')    
-                }, 2000);
+                }, 1000);
                 
 
             }else{
